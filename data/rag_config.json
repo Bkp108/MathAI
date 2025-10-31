@@ -1,0 +1,6 @@
+{
+  "collection_name": "math_problems",
+  "embedding_model_name": "all-MiniLM-L6-v2",
+  "embedding_dim": 384,
+  "total_problems": 20
+}

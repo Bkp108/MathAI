@@ -1,0 +1,10 @@
+{
+  "search_provider": "Tavily",
+  "max_results_default": 3,
+  "search_depth": "advanced",
+  "tools_available": [
+    "web_search",
+    "knowledge_base_search"
+  ],
+  "fallback_enabled": true
+}

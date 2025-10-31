@@ -1,0 +1,162 @@
+[
+  {
+    "id": "alg_001",
+    "question": "Solve for x: 2x + 5 = 13",
+    "solution": "Step 1: Subtract 5 from both sides\n2x + 5 - 5 = 13 - 5\n2x = 8\n\nStep 2: Divide both sides by 2\nx = 8/2\nx = 4",
+    "answer": "x = 4",
+    "topic": "Linear Equations",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg_002",
+    "question": "Factor the expression: x\u00b2 + 5x + 6",
+    "solution": "Step 1: Find two numbers that multiply to 6 and add to 5\nNumbers: 2 and 3 (2\u00d73=6, 2+3=5)\n\nStep 2: Write as factors\nx\u00b2 + 5x + 6 = (x + 2)(x + 3)",
+    "answer": "(x + 2)(x + 3)",
+    "topic": "Factoring",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg_003",
+    "question": "Solve the quadratic equation: x\u00b2 - 7x + 12 = 0",
+    "solution": "Step 1: Factor the quadratic\nx\u00b2 - 7x + 12 = (x - 3)(x - 4) = 0\n\nStep 2: Set each factor to zero\nx - 3 = 0  or  x - 4 = 0\nx = 3  or  x = 4",
+    "answer": "x = 3 or x = 4",
+    "topic": "Quadratic Equations",
+    "difficulty": "medium"
+  },
+  {
+    "id": "calc_001",
+    "question": "Find the derivative of f(x) = 3x\u00b2 + 2x - 1",
+    "solution": "Step 1: Apply power rule to each term\nd/dx(3x\u00b2) = 3 \u00d7 2x = 6x\nd/dx(2x) = 2\nd/dx(-1) = 0\n\nStep 2: Combine results\nf'(x) = 6x + 2",
+    "answer": "f'(x) = 6x + 2",
+    "topic": "Derivatives",
+    "difficulty": "easy"
+  },
+  {
+    "id": "calc_002",
+    "question": "Integrate: \u222b(2x + 3)dx",
+    "solution": "Step 1: Apply power rule for integration\n\u222b2x dx = 2 \u00d7 (x\u00b2/2) = x\u00b2\n\u222b3 dx = 3x\n\nStep 2: Add constant of integration\n\u222b(2x + 3)dx = x\u00b2 + 3x + C",
+    "answer": "x\u00b2 + 3x + C",
+    "topic": "Integration",
+    "difficulty": "easy"
+  },
+  {
+    "id": "geom_001",
+    "question": "Find the area of a circle with radius 5 cm",
+    "solution": "Step 1: Use the formula A = \u03c0r\u00b2\nA = \u03c0 \u00d7 (5)\u00b2\nA = \u03c0 \u00d7 25\nA = 25\u03c0 cm\u00b2\n\nStep 2: Approximate value\nA \u2248 78.54 cm\u00b2",
+    "answer": "25\u03c0 cm\u00b2 or approximately 78.54 cm\u00b2",
+    "topic": "Circle Area",
+    "difficulty": "easy"
+  },
+  {
+    "id": "geom_002",
+    "question": "Find the volume of a cylinder with radius 3 cm and height 10 cm",
+    "solution": "Step 1: Use formula V = \u03c0r\u00b2h\nV = \u03c0 \u00d7 (3)\u00b2 \u00d7 10\nV = \u03c0 \u00d7 9 \u00d7 10\nV = 90\u03c0 cm\u00b3\n\nStep 2: Approximate value\nV \u2248 282.74 cm\u00b3",
+    "answer": "90\u03c0 cm\u00b3 or approximately 282.74 cm\u00b3",
+    "topic": "Volume",
+    "difficulty": "medium"
+  },
+  {
+    "id": "trig_001",
+    "question": "If sin(\u03b8) = 3/5 and \u03b8 is in the first quadrant, find cos(\u03b8)",
+    "solution": "Step 1: Use Pythagorean identity: sin\u00b2(\u03b8) + cos\u00b2(\u03b8) = 1\n(3/5)\u00b2 + cos\u00b2(\u03b8) = 1\n9/25 + cos\u00b2(\u03b8) = 1\n\nStep 2: Solve for cos(\u03b8)\ncos\u00b2(\u03b8) = 1 - 9/25 = 16/25\ncos(\u03b8) = \u00b14/5\n\nStep 3: Choose positive (first quadrant)\ncos(\u03b8) = 4/5",
+    "answer": "cos(\u03b8) = 4/5",
+    "topic": "Trigonometric Identities",
+    "difficulty": "medium"
+  },
+  {
+    "id": "trig_002",
+    "question": "Simplify: sin(2x) in terms of sin(x) and cos(x)",
+    "solution": "Step 1: Apply double angle formula\nsin(2x) = 2sin(x)cos(x)\n\nThis is the simplified form.",
+    "answer": "sin(2x) = 2sin(x)cos(x)",
+    "topic": "Double Angle Formulas",
+    "difficulty": "easy"
+  },
+  {
+    "id": "stat_001",
+    "question": "Find the mean of the dataset: 4, 7, 2, 9, 5, 3",
+    "solution": "Step 1: Add all numbers\nSum = 4 + 7 + 2 + 9 + 5 + 3 = 30\n\nStep 2: Divide by count\nMean = 30 \u00f7 6 = 5",
+    "answer": "Mean = 5",
+    "topic": "Mean",
+    "difficulty": "easy"
+  },
+  {
+    "id": "stat_002",
+    "question": "Find the median of: 12, 5, 8, 15, 3, 10",
+    "solution": "Step 1: Sort the data\n3, 5, 8, 10, 12, 15\n\nStep 2: Find middle values (even count)\nMiddle two values: 8 and 10\n\nStep 3: Average them\nMedian = (8 + 10) / 2 = 9",
+    "answer": "Median = 9",
+    "topic": "Median",
+    "difficulty": "easy"
+  },
+  {
+    "id": "alg_004",
+    "question": "Solve the system: 2x + y = 7 and x - y = 2",
+    "solution": "Step 1: Add equations to eliminate y\n(2x + y) + (x - y) = 7 + 2\n3x = 9\nx = 3\n\nStep 2: Substitute x = 3 into second equation\n3 - y = 2\ny = 1",
+    "answer": "x = 3, y = 1",
+    "topic": "Systems of Equations",
+    "difficulty": "medium"
+  },
+  {
+    "id": "alg_005",
+    "question": "Simplify: (x\u00b2 - 4) / (x - 2)",
+    "solution": "Step 1: Factor numerator (difference of squares)\nx\u00b2 - 4 = (x + 2)(x - 2)\n\nStep 2: Cancel common factor\n(x + 2)(x - 2) / (x - 2) = x + 2\n\nNote: x \u2260 2",
+    "answer": "x + 2 (where x \u2260 2)",
+    "topic": "Rational Expressions",
+    "difficulty": "medium"
+  },
+  {
+    "id": "calc_003",
+    "question": "Find the derivative of f(x) = sin(x) + cos(x)",
+    "solution": "Step 1: Apply derivative rules\nd/dx[sin(x)] = cos(x)\nd/dx[cos(x)] = -sin(x)\n\nStep 2: Combine\nf'(x) = cos(x) - sin(x)",
+    "answer": "f'(x) = cos(x) - sin(x)",
+    "topic": "Derivatives of Trig Functions",
+    "difficulty": "easy"
+  },
+  {
+    "id": "calc_004",
+    "question": "Find critical points of f(x) = x\u00b2 - 4x + 3",
+    "solution": "Step 1: Find derivative\nf'(x) = 2x - 4\n\nStep 2: Set derivative equal to zero\n2x - 4 = 0\n2x = 4\nx = 2\n\nCritical point at x = 2",
+    "answer": "Critical point at x = 2",
+    "topic": "Critical Points",
+    "difficulty": "medium"
+  },
+  {
+    "id": "geom_003",
+    "question": "Find the perimeter of a rectangle with length 8 cm and width 5 cm",
+    "solution": "Step 1: Use formula P = 2(l + w)\nP = 2(8 + 5)\nP = 2(13)\nP = 26 cm",
+    "answer": "26 cm",
+    "topic": "Perimeter",
+    "difficulty": "easy"
+  },
+  {
+    "id": "geom_004",
+    "question": "Find the distance between points A(2, 3) and B(5, 7)",
+    "solution": "Step 1: Use distance formula d = \u221a[(x\u2082-x\u2081)\u00b2 + (y\u2082-y\u2081)\u00b2]\nd = \u221a[(5-2)\u00b2 + (7-3)\u00b2]\nd = \u221a[3\u00b2 + 4\u00b2]\nd = \u221a[9 + 16]\nd = \u221a25\nd = 5",
+    "answer": "5 units",
+    "topic": "Distance Formula",
+    "difficulty": "medium"
+  },
+  {
+    "id": "prob_001",
+    "question": "What is the probability of rolling a 4 on a standard six-sided die?",
+    "solution": "Step 1: Count favorable outcomes\nFavorable outcome: {4}\nCount = 1\n\nStep 2: Count total outcomes\nTotal outcomes: {1, 2, 3, 4, 5, 6}\nCount = 6\n\nStep 3: Calculate probability\nP(4) = 1/6 \u2248 0.167 or 16.7%",
+    "answer": "1/6 or approximately 16.7%",
+    "topic": "Basic Probability",
+    "difficulty": "easy"
+  },
+  {
+    "id": "prob_002",
+    "question": "Two coins are flipped. What's the probability of getting at least one head?",
+    "solution": "Step 1: List all outcomes\n{HH, HT, TH, TT}\nTotal = 4\n\nStep 2: Count favorable outcomes (at least 1 head)\n{HH, HT, TH}\nCount = 3\n\nStep 3: Calculate probability\nP(at least 1 head) = 3/4 = 0.75 or 75%",
+    "answer": "3/4 or 75%",
+    "topic": "Probability",
+    "difficulty": "medium"
+  },
+  {
+    "id": "num_001",
+    "question": "Is 17 a prime number? Explain.",
+    "solution": "Step 1: Check divisibility by primes up to \u221a17 \u2248 4.12\nPrimes to check: 2, 3\n\nStep 2: Test divisibility\n17 \u00f7 2 = 8.5 (not divisible)\n17 \u00f7 3 = 5.67 (not divisible)\n\nStep 3: Conclusion\n17 is only divisible by 1 and itself\nTherefore, 17 is prime",
+    "answer": "Yes, 17 is a prime number",
+    "topic": "Prime Numbers",
+    "difficulty": "easy"
+  }
+]
