@@ -64,7 +64,7 @@ Beautiful Response with Steps
 ### Backend
 
 - **Framework:** FastAPI (Python 3.10+)
-- **AI Model:** Google Gemini 1.5 Flash (FREE - 60 req/min)
+- **AI Model:** Google Gemini 2.5 Flash (FREE - 60 req/min)
 - **Vector DB:** Qdrant (in-memory/persistent)
 - **Embeddings:** SentenceTransformers (all-MiniLM-L6-v2)
 - **Web Search:** Tavily API (FREE - 1000 req/month)
@@ -480,7 +480,7 @@ netstat -ano | findstr :8000
 
 ```bash
 # Make sure model name is correct in backend/services/gemini_agent.py
-# Should be: 'gemini-1.5-flash' (not 'gemini-1.5-flash-latest')
+# Should be: 'gemini-2.5-flash' (not 'gemini-2.5-flash-latest')
 ```
 
 **Issue: "No response" or blank chat**
