@@ -1,4 +1,4 @@
-// frontend/src/hooks/useChat.js
+// frontend/src/hooks/useChat.js - FIXED VERSION
 import { useState, useCallback } from 'react';
 import apiService from '../services/api';
 
@@ -24,29 +24,40 @@ export default function useChat() {
     setError(null);
 
     try {
+      console.log('📤 Sending message:', messageText);
+      
       // Call API
       const response = await apiService.chat(messageText, sessionId, true);
+      
+      console.log('📥 Received response:', response);
+
+      // Check if response has solution
+      if (!response.solution && !response.error) {
+        throw new Error('No solution received from backend');
+      }
 
       // Add AI response
       const aiMessage = {
         id: Date.now() + 1,
         role: 'assistant',
-        content: response.solution || response.message,
+        content: response.solution || response.error || 'No response',
         timestamp: new Date().toLocaleTimeString(),
         metadata: response.metadata,
-        blocked: response.blocked
+        blocked: response.blocked,
+        query: response.query // Store original query for feedback
       };
 
       setMessages(prev => [...prev, aiMessage]);
+      
     } catch (err) {
-      console.error('Chat error:', err);
+      console.error('❌ Chat error:', err);
       setError(err.message || 'Failed to send message');
 
       // Add error message
       const errorMessage = {
         id: Date.now() + 1,
         role: 'assistant',
-        content: '❌ Error: Could not generate solution. Please check if the backend is running on http://localhost:8000',
+        content: `❌ Error: ${err.message}\n\nPlease check:\n1. Backend is running on http://localhost:8000\n2. GEMINI_API_KEY is set correctly\n3. Network connection is working`,
         timestamp: new Date().toLocaleTimeString(),
         blocked: false
       };
@@ -59,27 +70,50 @@ export default function useChat() {
 
   const submitFeedback = useCallback(async (message, feedbackData) => {
     try {
+      console.log('📤 Submitting feedback for message:', message.id);
+      
       // Find the user message that corresponds to this AI message
       const messageIndex = messages.findIndex(m => m.id === message.id);
-      const userMessage = messages[messageIndex - 1];
-
-      if (!userMessage) {
-        console.error('Could not find corresponding user message');
+      
+      if (messageIndex === -1) {
+        console.error('❌ Message not found in history');
         return false;
       }
 
-      await apiService.submitFeedback({
-        query: userMessage.content,
+      // Get the previous message (should be user's query)
+      const userMessage = messages[messageIndex - 1];
+      
+      // Also check if message has stored query
+      const query = message.query || (userMessage && userMessage.role === 'user' ? userMessage.content : null);
+
+      if (!query) {
+        console.error('❌ Could not find corresponding user message');
+        alert('Could not find the original question for this response');
+        return false;
+      }
+
+      console.log('📝 Feedback data:', {
+        query,
         solution: message.content,
-        rating: feedbackData.rating,
-        comment: feedbackData.comment,
-        improved_solution: feedbackData.improved_solution
+        rating: feedbackData.rating
       });
 
+      // Submit feedback
+      const response = await apiService.submitFeedback({
+        query: query,
+        solution: message.content,
+        rating: feedbackData.rating,
+        comment: feedbackData.comment || null,
+        improved_solution: feedbackData.improved_solution || null
+      });
+
+      console.log('✅ Feedback submitted:', response);
       return true;
+      
     } catch (err) {
-      console.error('Feedback error:', err);
+      console.error('❌ Feedback error:', err);
       setError(err.message || 'Failed to submit feedback');
+      alert(`Failed to submit feedback: ${err.message}`);
       return false;
     }
   }, [messages]);

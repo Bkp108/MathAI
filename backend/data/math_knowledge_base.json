@@ -1,0 +1,26 @@
+[
+  {
+    "id": "alg_001",
+    "question": "Solve for x: 2x + 5 = 13",
+    "solution": "Step 1: Subtract 5 from both sides\n2x = 8\n\nStep 2: Divide by 2\nx = 4",
+    "answer": "x = 4",
+    "topic": "Linear Equations",
+    "difficulty": "easy"
+  },
+  {
+    "id": "calc_001",
+    "question": "Find the derivative of f(x) = x\u00b2",
+    "solution": "Using the power rule:\nf'(x) = 2x^(2-1) = 2x",
+    "answer": "f'(x) = 2x",
+    "topic": "Derivatives",
+    "difficulty": "easy"
+  },
+  {
+    "id": "geom_001",
+    "question": "Find the area of a circle with radius 5",
+    "solution": "Using A = \u03c0r\u00b2:\nA = \u03c0 \u00d7 5\u00b2 = 25\u03c0 \u2248 78.54",
+    "answer": "25\u03c0 or approximately 78.54",
+    "topic": "Circle Area",
+    "difficulty": "easy"
+  }
+]

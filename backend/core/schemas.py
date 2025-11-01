@@ -34,7 +34,7 @@ class ChatRequest(BaseModel):
     message: str = Field(..., min_length=1, max_length=500)
     session_id: Optional[str] = None
     use_feedback_learning: bool = True
-    
+
     @validator('message')
     def validate_message(cls, v):
         if not v.strip():
@@ -61,13 +61,21 @@ class RoutingDecision(BaseModel):
 class ChatResponse(BaseModel):
     """Chat response to user"""
     success: bool
-    message: str
     query: str
     solution: Optional[str] = None
     routing: Optional[RoutingDecision] = None
     metadata: Optional[Dict[str, Any]] = None
     error: Optional[str] = None
     blocked: bool = False
+
+    @property
+    def message(self) -> str:
+        """Backward compatibility - returns solution or error message"""
+        if self.blocked:
+            return self.error or "Request blocked by guardrails"
+        if self.success:
+            return "Solution generated successfully"
+        return self.error or "Failed to generate solution"
 
 
 # ========== Feedback Schemas ==========
@@ -79,7 +87,7 @@ class FeedbackRequest(BaseModel):
     rating: Optional[int] = Field(None, ge=1, le=5)
     comment: Optional[str] = None
     improved_solution: Optional[str] = None
-    
+
     @validator('rating')
     def validate_rating(cls, v):
         if v is not None and (v < 1 or v > 5):

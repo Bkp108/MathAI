@@ -7,7 +7,7 @@ from typing import List, Dict, Optional
 from pathlib import Path
 
 from qdrant_client import QdrantClient
-from qdrant_client.models import Distance, VectorParams, PointStruct
+from qdrant_client.models import Distance, VectorParams, PointStruct, Filter, FieldCondition, MatchValue
 
 from core.config import settings
 from core.schemas import KnowledgeBaseItem, SearchResponse
@@ -172,12 +172,13 @@ class RAGEngine:
             # Create embedding for query
             query_embedding = self.embedding_service.encode(query)
             
-            # Search Qdrant
-            search_results = self.client.search(
+            # Use query_points instead of deprecated search
+            search_results = self.client.query_points(
                 collection_name=self.collection_name,
-                query_vector=query_embedding.tolist(),
-                limit=top_k
-            )
+                query=query_embedding.tolist(),
+                limit=top_k,
+                with_payload=True
+            ).points
             
             # Filter by score threshold and convert to schema
             results = []

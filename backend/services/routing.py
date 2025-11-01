@@ -43,15 +43,22 @@ class RoutingService:
         # Step 1: Input Guardrails
         guardrail_check = self.guardrails.check_input_guardrail(query)
         
-        if not guardrail_check.allowed:
-            logger.warning(f"Query blocked: {guardrail_check.reason}")
+        # Convert Pydantic model to dict if needed
+        if hasattr(guardrail_check, 'dict'):
+            guardrail_dict = guardrail_check.dict()
+        elif hasattr(guardrail_check, 'model_dump'):
+            guardrail_dict = guardrail_check.model_dump()
+        else:
+            guardrail_dict = guardrail_check
+        
+        if not guardrail_dict['allowed']:
+            logger.warning(f"Query blocked: {guardrail_dict['reason']}")
             return ChatResponse(
                 success=False,
-                message=guardrail_check.reason,
                 query=query,
                 solution=None,
                 blocked=True,
-                error=guardrail_check.reason
+                error=guardrail_dict['reason']
             )
         
         # Step 2: Sanitize input
@@ -71,13 +78,21 @@ class RoutingService:
             result = await self._generate_from_web(query)
         
         # Step 5: Output Guardrails
-        if result['success']:
+        if result['success'] and result.get('solution'):
             output_check = self.guardrails.check_output_guardrail(result['solution'])
-            if not output_check.allowed:
+            
+            # Convert to dict if needed
+            if hasattr(output_check, 'dict'):
+                output_dict = output_check.dict()
+            elif hasattr(output_check, 'model_dump'):
+                output_dict = output_check.model_dump()
+            else:
+                output_dict = output_check
+                
+            if not output_dict['allowed']:
                 logger.warning("Response blocked by output guardrails")
                 return ChatResponse(
                     success=False,
-                    message="Generated response did not pass safety checks",
                     query=query,
                     solution=None,
                     blocked=True,
@@ -95,7 +110,6 @@ class RoutingService:
         if result['success']:
             return ChatResponse(
                 success=True,
-                message="Solution generated successfully",
                 query=query,
                 solution=result['solution'],
                 routing=routing_info,
@@ -109,7 +123,6 @@ class RoutingService:
         else:
             return ChatResponse(
                 success=False,
-                message="Failed to generate solution",
                 query=query,
                 solution=None,
                 routing=routing_info,

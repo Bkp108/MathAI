@@ -4,6 +4,8 @@ Configuration management using Pydantic Settings
 from pydantic_settings import BaseSettings
 from typing import List
 import os
+import json
+from pathlib import Path
 
 
 class Settings(BaseSettings):
@@ -35,9 +37,17 @@ class Settings(BaseSettings):
     BACKEND_PORT: int = 8000
     FRONTEND_PORT: int = 5173
 
-    # CORS
-    CORS_ORIGINS: List[str] = [
-        "http://localhost:5173", "http://localhost:3000"]
+    # CORS - Store as JSON string in env
+    CORS_ORIGINS: str = '["http://localhost:5173","http://localhost:3000","http://127.0.0.1:5173"]'
+    
+    @property
+    def cors_origins_list(self) -> List[str]:
+        """Parse CORS_ORIGINS JSON string to list"""
+        try:
+            return json.loads(self.CORS_ORIGINS)
+        except json.JSONDecodeError:
+            # Fallback: split by comma if not valid JSON
+            return [origin.strip() for origin in self.CORS_ORIGINS.split(',')]
 
     # Logging
     LOG_LEVEL: str = "INFO"
@@ -62,8 +72,12 @@ class Settings(BaseSettings):
     SHOW_STACK_TRACES: bool = False
 
     class Config:
+        # Look for .env file in parent directory (project root)
         env_file = "../.env"
+        env_file_encoding = 'utf-8'
         case_sensitive = True
+        # Allow extra fields (like VITE_API_URL) but ignore them
+        extra = "ignore"
 
 
 # Global settings instance

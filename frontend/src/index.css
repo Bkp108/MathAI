@@ -41,6 +41,18 @@ body {
   background: #4b5563;
 }
 
+/* Selection */
+::selection {
+  background-color: #3b82f6;
+  color: white;
+}
+
+/* Focus Styles */
+*:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
 /* Base Layer */
 @layer base {
   body {
@@ -72,10 +84,5 @@ body {
   .scrollbar-hide {
     -ms-overflow-style: none;
     scrollbar-width: none;
-  }
-
-  /* Optional: define border-border if you want to keep it */
-  .border-border {
-    border: 1px solid #374151; /* Tailwind gray-700 */
   }
 }
