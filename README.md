@@ -648,10 +648,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support & Contact
 
-- 📧 **Email:** your-email@example.com
+- 📧 **Email:** brijeshkpurohit04@gmail.com
 - 🐛 **Bug Reports:** [GitHub Issues](https://github.com/your-repo/issues)
 - 💬 **Discussions:** [GitHub Discussions](https://github.com/your-repo/discussions)
-- 📖 **Full Docs:** [Documentation Site](your-docs-link)
+- 📖 **Full Docs:** [Documentation Site]([your-docs-link](https://github.com/Bkp108/MathAI/tree/main/Doc))
 
 ---
 
