@@ -6,7 +6,7 @@
 
 ```
 ✅ Environment Variables configured
-✅ Gemini API working (gemini-1.5-flash)
+✅ Gemini API working (gemini-2.5-flash)
 ✅ Tavily Search working
 ✅ Embeddings working (384 dimensions)
 ✅ Qdrant Vector DB working (in-memory)
